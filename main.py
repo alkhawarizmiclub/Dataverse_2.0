@@ -179,7 +179,7 @@ addlabels(axis[1, 1], x_labels, list(map(int, mae_y_values)))
 # Validation ===============================================================
 
 ### Saving the submission file ....................................
-original_validation_data = pd.read_csv('test_dataset.csv')
+original_validation_data = pd.read_csv('submission_x_values.csv')
 validation_data = original_validation_data.set_index('index')
 
 pre_processed_validation_data = pre_processing(validation_data, True)
@@ -188,7 +188,7 @@ X_valid = pre_processed_validation_data.values
 y_pred_valid = lightGBMRegressor.predict(X_valid)
 
 original_validation_data[target_name] = y_pred_valid
-original_validation_data.to_csv('submission_dataset.csv', index=False, encoding='UTF-8')
+original_validation_data.to_csv('submission_y_values_predicted.csv', index=False, encoding='UTF-8')
 
 
 ### Saving the model ....................................
